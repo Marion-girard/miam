@@ -1,6 +1,6 @@
 <?php
 
-/*
+
 namespace Http\Rooter;
 
 class Rooting{
@@ -39,10 +39,10 @@ class Rooting{
             }
         }
     }
-}*/
+}
 
 
-$router= isset($_GET['action']) ? $_GET['action']: '';
+/*$router= isset($_GET['action']) ? $_GET['action']: '';
 
 
 switch ($router) {
@@ -92,4 +92,4 @@ switch ($router) {
         require './View/layout.phtml' ;
        
         break;
-}
+}*/
