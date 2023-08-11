@@ -2,7 +2,7 @@
 
 require './resources/Autoload.php';
 
-$instanceRouter = new Http\Rooter\Rooting;
+$instanceRouter = new Http\Router\Rooting;
 
 if(!isset($_GET[('action')])) {
     $instanceHome = new Http\Controllers\Home;

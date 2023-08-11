@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Http\Rooter;
+namespace Http\Router;
 
 class Rooting{
 
