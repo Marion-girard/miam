@@ -19,7 +19,7 @@ if(!isset($_GET[('action')])) {
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
-define('LARAVEL_START', microtime(true));*/
+define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
@@ -68,4 +68,4 @@ $response = $kernel->handle(
     $request = Request::capture()
 )->send();
 
-$kernel->terminate($request, $response);*/
+$kernel->terminate($request, $response);

@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::resource('recipes', RecipeController::class);
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
