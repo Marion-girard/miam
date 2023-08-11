@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
 
@@ -24,4 +24,4 @@ Route::get('/register', function () {
 Route::post('/register', function () {
     return 'Votre email est ' . request('email');
 
-});
+});*/
