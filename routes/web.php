@@ -17,11 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/inscription', function () {
-    return view('inscription');
+Route::get('/register', function () {
+    return view('register');
 });
 
-Route::post('/inscription', function () {
+Route::post('/register', function () {
     return 'Votre email est ' . request('email');
 
 });
