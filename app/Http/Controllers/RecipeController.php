@@ -12,7 +12,10 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
+        //récupérer les recettes
+        $recipes = recipe::all();
+        //retourne l'index
+        return view('recipes.index', compact('recipes'));
     }
 
     /**
@@ -20,7 +23,8 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+        //retourne create
+        return view('recipes.create');
     }
 
     /**
