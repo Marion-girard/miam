@@ -1,13 +1,13 @@
 <?php
 
-require './resources/Autoload.php';
+/*require './resources/Autoload.php';
 
 $instanceRouter = new Http\Router\Rooting;
 
 if(!isset($_GET[('action')])) {
     $instanceHome = new Http\Controllers\Home;
     $instanceHome->index();
-}
+}*/
 
 
 
@@ -16,7 +16,7 @@ if(!isset($_GET[('action')])) {
 
 
 
-/*use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));*/
@@ -32,9 +32,9 @@ define('LARAVEL_START', microtime(true));*/
 |
 */
 
-/*if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
     require $maintenance;
-}*/
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +47,7 @@ define('LARAVEL_START', microtime(true));*/
 |
 */
 
-/*require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +60,7 @@ define('LARAVEL_START', microtime(true));*/
 |
 */
 
-/*$app = require_once __DIR__.'/../bootstrap/app.php';
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
 
