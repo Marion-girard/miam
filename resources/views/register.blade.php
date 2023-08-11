@@ -1,10 +1,10 @@
-<form action="?action=addRegister" method="POST">
-    <label for="nom"> Nom
-    <input type="text" value="nom" name="nom">
-    </label>
+@extends('layout')
 
-    <label for="motdepasse"> Mot de passe
-    <input type="password" value="motdepasse" name="motdepasse">
-    </label>
-    <input type="submit" value="Envoyer">
-</form>
+@section('contenu')
+    <form action="/inscription" method="post">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Mot de passe">
+        <input type="password" name="password_confirmation" placeholder="Mot de passe (confirmation)">
+        <input type="submit" value="M'inscrire">
+    </form>
+@endsection
