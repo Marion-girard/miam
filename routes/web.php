@@ -25,3 +25,7 @@ Route::post('/register', function () {
     return 'Votre email est ' . request('email');
 
 });
+
+// Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
