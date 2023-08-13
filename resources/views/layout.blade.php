@@ -12,8 +12,8 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Recettes</a></li>
-                <li><a href="#"></a>Inscription</li>
-                <li><a href="#">Connexion</a></li>
+                <li><a href="register">Inscription</a></li>
+                <li><a href="login">Connexion</a></li>
             </ul>
         </nav>
     </header>
