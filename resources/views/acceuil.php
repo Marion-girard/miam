@@ -1,14 +1,12 @@
+Les recette
 
-<h2> Les recettes </h2>
-                <?php require './Controllers/show_recipe.php';?>
-                <?php  foreach ($resultdataRecipe as $dataRecipe ):?>
-                <ul> 
-                    <li>
-                        <a href=""><?php echo $dataRecipe['nom'] ?></a>
-                        
-                        
-                    </li>
-                    
-                </ul>
-                </div>
-                <?php  endforeach; ?>  
+<?php 
+use Illuminate\Support\Facades\DB; ?>
+ 
+ <?php  $titles = DB::table('recipe')->pluck('title');?>
+ 
+ <?php foreach ($titles as $title): ?>
+    <?php echo $title;?>
+  
+    <?php endforeach; ?>
+
