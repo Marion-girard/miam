@@ -23,7 +23,7 @@
         </div>
     </header>
     
-    @yield('contenu')
+    @include('acceuil')
     <footer>
         <p>Copyright Les gourmands à l'insu de leur plein gré 2023</p>
     </footer>           
