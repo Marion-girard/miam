@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RecipeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< HEAD
 Route::get('/', function () {
     return view('layout');
+=======
+Route::resource('recipe', RecipeController::class);
+
+Route::get('/', function () {
+    return view('welcome');
+>>>>>>> pascal
 });
 
 Route::get('/dashboard', function () {
@@ -28,4 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> pascal
 require __DIR__.'/auth.php';

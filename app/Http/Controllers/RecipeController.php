@@ -13,9 +13,9 @@ class RecipeController extends Controller
     public function index()
     {
         //récupérer les recettes
-        $recipes = recipe::all();
+        $recipe = recipe::all();
         //retourne l'index
-        return view('recipes.index', compact('recipes'));
+        return view('recipe.index', compact('recipe'));
     }
 
     /**
@@ -24,7 +24,7 @@ class RecipeController extends Controller
     public function create()
     {
         //retourne create
-        return view('recipes.create');
+        return view('recipe.create');
     }
 
     /**
@@ -32,7 +32,15 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //enregistre 1 nouvl recette ds la bdd
+        $data = $request->validate ([
+            'title' =>'required',
+            'ingredients' =>'required',
+            'step' =>'required',
+        ]);
+
+        $recipe = Recipe::create($data);
+        return redirect()->route('recipe.show', $recipe->id);
     }
 
     /**
@@ -40,7 +48,8 @@ class RecipeController extends Controller
      */
     public function show(recipe $recipe)
     {
-        //
+        //affiche 1 recette 
+        return view('recipe.show', compact('recipe'));
     }
 
     /**
@@ -48,7 +57,8 @@ class RecipeController extends Controller
      */
     public function edit(recipe $recipe)
     {
-        //
+        //affiche le form pour éditer 1 recette existante
+        return view('recipe.edit', compact('recipe'));
     }
 
     /**
@@ -56,7 +66,15 @@ class RecipeController extends Controller
      */
     public function update(Request $request, recipe $recipe)
     {
-        //
+        //mets à jour une recette ds la bdd
+        $data = $request->validate ([
+            'title' =>'required',
+            'ingredients' =>'required',
+            'step' =>'required',
+        ]);
+
+        $recipe->update($data);
+        return redirect()->route('recipe.show', $recipe->id);
     }
 
     /**
@@ -64,6 +82,8 @@ class RecipeController extends Controller
      */
     public function destroy(recipe $recipe)
     {
-        //
+        //supprime 1 recette
+        $recipe->delete();
+        return redirect()->route('recipe.index');
     }
 }
