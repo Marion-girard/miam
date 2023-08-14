@@ -1,10 +1,14 @@
+@extends('layout')
 
+@section('contenu')
+
+bouh
 <h2> Les recettes </h2>
-<?php require './Controllers/show_message.php';?>
+<?php require './Controllers/show_recipe.php';?>
 <?php  foreach ($resultdataRecipe as $dataRecipe ):?>
 <ul> 
     <li>
-        <a href="afficheRecipeid=<?php $dataRecipe['id'] ?>"><?php echo $dataRecipe['nom'] ?></a>
+        <a href=""><?php echo $dataRecipe['nom'] ?></a>
         
         
     </li>
@@ -12,3 +16,4 @@
 </ul>
 </div>
 <?php  endforeach; ?>  
+@endsection
