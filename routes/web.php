@@ -15,15 +15,8 @@ use App\Http\Controllers\RecipeController;
 |
 */
 
-<<<<<<< HEAD
 Route::get('/', function () {
     return view('layout');
-=======
-Route::resource('recipe', RecipeController::class);
-
-Route::get('/', function () {
-    return view('welcome');
->>>>>>> pascal
 });
 
 Route::get('/dashboard', function () {
@@ -36,8 +29,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> pascal
 require __DIR__.'/auth.php';
