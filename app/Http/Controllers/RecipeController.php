@@ -15,9 +15,9 @@ class RecipeController extends Controller
     public function index()
     {
         //récupérer les recettes
-        $recipe = recipe::all();
+        
         //retourne l'index
-        return view('recipe.index', compact('recipe'));
+        return view('recipe.index');
     }
 
     /**
@@ -36,13 +36,14 @@ class RecipeController extends Controller
     {
         //enregistre 1 nouvl recette ds la bdd
         $data = $request->validate ([
-            'title' =>'required',
-            'ingredients' =>'required',
-            'step' =>'required',
+            'title' => 'required',
+             'description' => 'required',
+                'ingredients' => 'required',
+                'instructions' => 'required',
         ]);
 
-        $recipe = Recipe::create($data);
-        return redirect()->route('recipe.show', $recipe->id);
+        Recipe::create($data);
+        return redirect()->route('recipe.index');
     }
 
     /**

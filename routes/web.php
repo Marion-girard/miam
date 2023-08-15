@@ -30,12 +30,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+require __DIR__.'/auth.php';
  
 
 Route::get('/recette', [AcceuilController::class, 'recette']);
 
-require __DIR__.'/auth.php';
 
-Route::get('/recipe', function () {
-    return view('recipe.index');
-});
+Route::get('/recipe', [RecipeController::class, 'index']); // Afficher la liste des recettes
+Route::get('/recipe', [RecipeController::class, 'create']); // Afficher le formulaire de création
+
+Route::post('/recipe', [RecipeController::class, 'store']);
