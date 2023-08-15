@@ -8,6 +8,6 @@
 @include('recipe.create')
 <?php $recipes = DB::table('recipes')->get(); ?>
 @foreach ($recipes as $recipe)
-    <a href= >{{ $recipe->title }} </a> - {{ $recipe->description }} <br>    
+    <a href="route('recipe.get')" {{ $recipe->id }} >{{ $recipe->title }} </a> - {{ $recipe->description }} <br>   
 @endforeach
 

@@ -5,4 +5,5 @@
     <p>{{ $recipe->description }}</p>
     <p><b>Ingrédients:</b> {{ $recipe->ingredients }}</p>
     <p><b>Instructions:</b> {{ $recipe->instructions }}</p>
+    
 @endsection
