@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\RecipeController;
+namespace App\Http\Controllers;
 
-use App\Models\Recipe;
+use App\Models\recipe;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class RecipeController extends Controller
 {
@@ -13,9 +15,9 @@ class RecipeController extends Controller
     public function index()
     {
         //récupérer les recettes
-        $recipe = recipe::all();
+        
         //retourne l'index
-        return view('recipe.index', compact('recipe'));
+        return view('recipe.index');
     }
 
     /**
@@ -34,13 +36,14 @@ class RecipeController extends Controller
     {
         //enregistre 1 nouvl recette ds la bdd
         $data = $request->validate ([
-            'title' =>'required',
-            'ingredients' =>'required',
-            'step' =>'required',
+            'title' => 'required',
+             'description' => 'required',
+                'ingredients' => 'required',
+                'instructions' => 'required',
         ]);
 
-        $recipe = Recipe::create($data);
-        return redirect()->route('recipe.show', $recipe->id);
+        Recipe::create($data);
+        return redirect()->route('recipe.index');
     }
 
     /**
@@ -49,7 +52,10 @@ class RecipeController extends Controller
     public function show(recipe $recipe)
     {
         //affiche 1 recette 
-        return view('recipe.show', compact('recipe'));
+        $recipe = DB::table('recipe')->get();
+ 
+        return view('recipe.show', ['recipe' => $recipe]);
+        
     }
 
     /**
