@@ -26,7 +26,7 @@ class RecipeController extends Controller
     public function create()
     {
         //retourne create
-        return view('recipe.create');
+        return view('recipe.index');
     }
 
     /**
@@ -43,7 +43,7 @@ class RecipeController extends Controller
         ]);
 
         Recipe::create($data);
-        return redirect()->route('recipe.index');
+        return redirect()->route('recipe.store');
     }
 
     /**
