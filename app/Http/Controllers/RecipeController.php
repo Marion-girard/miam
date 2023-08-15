@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\RecipeController;
 
 use App\Models\Recipe;
 use Illuminate\Http\Request;
