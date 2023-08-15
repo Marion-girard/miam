@@ -31,7 +31,11 @@ Route::middleware('auth')->group(function () {
 });
 
  
+
 Route::get('/recette', [AcceuilController::class, 'recette']);
 
 require __DIR__.'/auth.php';
 
+Route::get('/recipe', function () {
+    return view('recipe.index');
+});

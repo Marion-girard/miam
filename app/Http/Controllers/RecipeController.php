@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\recipe;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class RecipeController extends Controller
 {
@@ -49,7 +51,10 @@ class RecipeController extends Controller
     public function show(recipe $recipe)
     {
         //affiche 1 recette 
-        return view('recipe.show', compact('recipe'));
+        $recipe = DB::table('recipe')->get();
+ 
+        return view('recipe.show', ['recipe' => $recipe]);
+        
     }
 
     /**
