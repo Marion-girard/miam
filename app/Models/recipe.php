@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class recipe extends Model
+class Recipe extends Model
 {
     use HasFactory;
 
@@ -14,6 +14,8 @@ class recipe extends Model
         'description', 
         'ingredients',
         'instructions',
+        'create_at',
+        'update_at',
         'user_id'
     ];
 
