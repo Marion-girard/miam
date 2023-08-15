@@ -56,8 +56,14 @@ class RecipeController extends Controller
  
         return view('recipe.show', ['recipe' => $recipe]);
         
+    
     }
-
+        public function getrecipebyId($id) {
+            $recipe = DB::table('recipes')->find($id);
+            if ($recipe) {
+                return view('recipe.show', ['recipe' => $recipe]);
+            }
+        }
     /**
      * Show the form for editing the specified resource.
      */
