@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\AcceuilController;
 
@@ -17,7 +17,6 @@ use App\Http\Controllers\AcceuilController;
 |
 */
 
-Route::resource('recipe', RecipeController::class);
 
 Route::get('/', function () {
     return view('layout');

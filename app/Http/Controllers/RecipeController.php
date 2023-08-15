@@ -6,6 +6,7 @@ use App\Models\recipe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
@@ -37,10 +38,12 @@ class RecipeController extends Controller
         //enregistre 1 nouvl recette ds la bdd
         $data = $request->validate ([
             'title' => 'required',
-             'description' => 'required',
-                'ingredients' => 'required',
-                'instructions' => 'required',
+            'description' => 'required',
+            'ingredients' => 'required',
+            'instructions' => 'required',
+
         ]);
+
 
         Recipe::create($data);
         return redirect()->route('recipe.store');
@@ -58,6 +61,10 @@ class RecipeController extends Controller
         
     
     }
+    public function test() {
+        return ('recette remplie');
+    }
+    
         public function getrecipebyId($id) {
             $recipe = DB::table('recipes')->find($id);
             if ($recipe) {

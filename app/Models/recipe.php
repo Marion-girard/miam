@@ -8,15 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Recipe extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = [
         'title',
         'description', 
         'ingredients',
         'instructions',
-        'create_at',
-        'update_at',
-        'user_id'
     ];
 
     public function user()

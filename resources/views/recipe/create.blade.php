@@ -6,7 +6,7 @@
 
     <form action="/recipe" method="post">
         @csrf
-      
+
         
         <div>
             <label>Titre:</label>
