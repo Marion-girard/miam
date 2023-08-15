@@ -1,9 +1,10 @@
-@section('content')
-    <h1>Liste des recettes</h1>
+<?php use Illuminate\Support\Facades\DB; ?>
+ 
 
-    @foreach($recipes as $recipe)
-        <div>
-            <h2><a href="{{ route('recipes.show', $recipe->id) }}">{{ $recipe->title }}</a></h2>
-        </div>
-    @endforeach
-@endsection
+<h1>Liste des recettes</h1>
+
+
+<?php $recipes = DB::table('recipe')->get(); ?>
+@foreach ($recipes as $recipe)
+    {{ $recipe->title }} - {{ $recipe->description }}<br>
+@endforeach
