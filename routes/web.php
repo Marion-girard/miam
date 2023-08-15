@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\AcceuilController;
 
 
 /*
@@ -20,7 +21,7 @@ Route::resource('recipe', RecipeController::class);
 Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.index');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout');
 });
 
 Route::get('/dashboard', function () {
@@ -33,5 +34,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 require __DIR__.'/auth.php';
+ 
+
+Route::get('/recette', [AcceuilController::class, 'recette']);
+
+
+Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.index'); // Afficher la liste des recettes
+Route::get('/recipe', [RecipeController::class, 'create']); // Afficher le formulaire de création
+
+Route::post('/recipe', [RecipeController::class, 'store']);
