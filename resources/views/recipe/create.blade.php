@@ -1,32 +1,31 @@
 
 
-@section('content')
+
+
     <h1>{{ isset($recipe) ? 'Modifier la recette' : 'Ajouter une recette' }}</h1>
 
-    <form action="{{ isset($recipe) ? route('recipes.update', $recipe->id) : route('recipes.store') }}" method="POST">
+    <form action="/recipe" method="post">
         @csrf
-        @if(isset($recipe))
-            @method('PUT')
-        @endif
+      
         
         <div>
             <label>Titre:</label>
-            <input type="text" name="title" value="{{ isset($recipe) ? $recipe->title : '' }}">
+            <input type="text" name="title">
         </div>
         <div>
             <label>Description:</label>
-            <textarea name="description">{{ isset($recipe) ? $recipe->description : '' }}</textarea>
+            <textarea name="description"></textarea>
         </div>
         <div>
             <label>Ingrédients:</label>
-            <textarea name="ingredients">{{ isset($recipe) ? $recipe->ingredients : '' }}</textarea>
+            <textarea name="ingredients"></textarea>
         </div>
         <div>
             <label>Instructions:</label>
-            <textarea name="instructions">{{ isset($recipe) ? $recipe->instructions : '' }}</textarea>
+            <textarea name="instructions"></textarea>
         </div>
         <div>
-            <button type="submit">{{ isset($recipe) ? 'Mettre à jour' : 'Ajouter' }}</button>
+            <button type="submit">{{  'Ajouter' }}</button>
         </div>
     </form>
-@endsection
+
