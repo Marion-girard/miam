@@ -1,4 +1,4 @@
-@extends('layouts.app')
+
 
 @section('content')
     <h1>{{ isset($recipe) ? 'Modifier la recette' : 'Ajouter une recette' }}</h1>
