@@ -17,12 +17,9 @@ use App\Http\Controllers\AcceuilController;
 |
 */
 
-<<<<<<< HEAD
 Route::resource('recipe', RecipeController::class);
 Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.index');
 
-=======
->>>>>>> marion
 Route::get('/', function () {
     return view('layout');
 });
