@@ -50,9 +50,10 @@ class RecipeController extends Controller
 
         Recipe::create($data);
 
-        return redirect()->route('recipe.store');
+        return redirect()->route('recipe.create');
     }
 
+    
     /**
      * Display the specified resource.
      */
@@ -74,7 +75,6 @@ class RecipeController extends Controller
         public function getrecipebyId($id) {
             $recipe = DB::table('users')->find($id);
             if ($recipe) {
-<<<<<<< HEAD
                 return view('recipe.index', ['recipe' => $recipe]);
             }
         }
@@ -83,9 +83,6 @@ class RecipeController extends Controller
             $recipe = DB::table('users')->find($id);
             if ($recipe) {
                 return view('recipe.index', ['user' => $recipe]);
-=======
-                return var_dump($id);// view('recipe.index', ['user' => $recipe]);
->>>>>>> pascal
             }
 
             $user = Auth::user(); // Récupérer l'utilisateur actuellement connecté
