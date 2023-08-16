@@ -5,7 +5,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\AcceuilController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +16,7 @@ use App\Http\Controllers\AcceuilController;
 |
 */
 
-
+// Routes sans authentification
 Route::get('/', function () {
     return view('layout');
 });
@@ -26,20 +25,21 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/recette', [AcceuilController::class, 'recette']);
+
+// Routes nécessitant une authentification
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/create-post', [RecipeController::class, 'create'])->name('recipe.create');
+    Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
+    Route::post('/recipe/add-message', [RecipeController::class, 'addMessage'])->name('recipe.addMessage');
+    Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.index');
+    Route::get('/recipe/{id}', [RecipeController::class, 'show'])->name('recipe.get');
+
 });
 
+// Auth routes
 require __DIR__.'/auth.php';
- 
-
-Route::get('/recette', [AcceuilController::class, 'recette']);
-
-
-// Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.index'); // Afficher la liste des recettes
-Route::get('/recipe', [RecipeController::class, 'create'])->name('recipe.create'); // Afficher le formulaire de création
-
-Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
-Route::get('/recipe/{id}', [RecipeController::class, 'getrecipebyId'])->name('recipe.get');

@@ -9,9 +9,9 @@
             @method('PUT')
         @endif
         
-        <div>
+        <div> 
             <label>Titre:</label>
-            <input type="text" name="title" value="{{ isset($recipe) ? $recipe->title : '' }}">
+            <input type="text" name="title" value="{{ old('title', $recipe->title ?? '') }}">
         </div>
         <div>
             <label>Description:</label>

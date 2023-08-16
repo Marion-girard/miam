@@ -17,9 +17,8 @@ return new class extends Migration
             $table->text('description');
             $table->text('ingredients');
             $table->text('instructions');
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->index('user_id');            
             $table->timestamps();
+            $table->bigInteger('user_id');
         });
     }
 
