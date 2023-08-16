@@ -8,7 +8,8 @@
 </head>
 <style>
     body {
-      background-image: url('./image/imagedecuisine.jpg');
+      background-image: url(".\image\imagedecuisine.jpg");
+      
       background-size: cover;
       background-position: center;
     }

@@ -68,7 +68,14 @@ class RecipeController extends Controller
         public function getrecipebyId($id) {
             $recipe = DB::table('recipes')->find($id);
             if ($recipe) {
-                return view('recipe.show', ['recipe' => $recipe]);
+                return view('recipe.index', ['recipe' => $recipe]);
+            }
+        }
+
+        public function getUserbyId($id) {
+            $recipe = DB::table('users')->find($id);
+            if ($recipe) {
+                return view('recipe.index', ['user' => $recipe]);
             }
         }
     /**
