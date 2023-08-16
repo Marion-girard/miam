@@ -16,6 +16,10 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     
+                    <x-nav-link :href="route('accueil')" :active="request()->routeIs('accueil')">
+                        {{ __('Accueil') }}
+                    </x-nav-link>
+
                     <x-nav-link :href="route('recipe.create')" :active="request()->routeIs('recipe.create')">
                         {{ __('Recette') }}
                     </x-nav-link>

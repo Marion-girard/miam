@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
  
 
-Route::get('/recette', [AcceuilController::class, 'recette']);
+Route::get('/Accueil', [AcceuilController::class, 'showrecette'])->name('accueil');
 
 
 //Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.test'); // Afficher la liste des recettes
@@ -49,3 +49,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/create-post', [RecipeController::class, 'create'])->name('recipe.create');
     Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
 });
+
+Route::get('/profile', [RecipeController::class, 'edit'])->name('recipe.edit');

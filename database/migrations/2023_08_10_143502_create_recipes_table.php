@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('instructions');
             $table->timestamps();
             $table->bigInteger('user_id');
+            
         });
     }
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+
 class RecipeController extends Controller
 {
     /**
@@ -47,7 +48,7 @@ class RecipeController extends Controller
         $user = Auth::user(); // Récupérer l'utilisateur actuellement connecté
 
         $data['user_id'] = $user->id; // Ajouter l'ID de l'utilisateur à $data
-
+        $data['user_name'] = $user->name;
         Recipe::create($data);
 
         return redirect()->route('recipe.create');
@@ -92,10 +93,12 @@ class RecipeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(recipe $recipe)
+    public function edit(Request $request)
     {
         //affiche le form pour éditer 1 recette existante
-        return view('recipe.edit', compact('recipe'));
+        return view('recipe.edit', [
+            'recipe' => $request->recipe(),
+        ]);
     }
 
     /**

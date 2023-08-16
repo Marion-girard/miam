@@ -8,7 +8,7 @@ class AcceuilController extends Controller
 {
     
         public function showrecette(){
-            return view("recipe");
+            return view("acceuil");
         }
     
 }
