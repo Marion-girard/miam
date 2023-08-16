@@ -6,10 +6,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>miam</title>
 </head>
-<body>
+<style>
+    body {
+      background-image: url('./image/imagedecuisine.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .content {
+      background-color: rgba(244, 244, 244, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    /*.custom-background {
+      background-color: #e11212; /* Couleur de fond personnalisée 
+      padding: 20px;
+    }*/
+  </style>
+<body >
 
     <header>
-        <div class="container">
+        <div  class="container d-flex justify-content-center align-items-center min-vh-100 custom-background">
+            <div class="content text-center">
         <h1>Ma Popote en cocote</h1>
         
             <nav class="nav"> 
@@ -20,6 +38,7 @@
                     <a href="login" class="nav-link">Connexion</a>
                 
             </nav>
+            </div>
         </div>
     </header>
     
