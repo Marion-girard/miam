@@ -5,9 +5,8 @@
 
 <h1>Liste des recettes</h1>
 
-
-<?php $recipes = DB::table('recipes')->where('name', 'John'); ?>
+<?php $recipes = DB::table('recipes')->where("user_id", Auth::user()->id )->get(); ?>
 @foreach ($recipes as $recipe) 
-    <a href="route('recipe.get')" {{ $recipe->id }} >{{ $recipe->title }} </a> - {{ $recipe->description }} <br>   
+    <a href="route('recipe.get')" {{ $recipe->id }}> {{ $recipe->title }} </a> - {{ $recipe->description }} <br>   
 @endforeach
 
