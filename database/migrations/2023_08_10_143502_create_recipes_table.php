@@ -17,8 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('ingredients');
             $table->text('instructions');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->timestamps();
             $table->bigInteger('user_id');
         });
     }
