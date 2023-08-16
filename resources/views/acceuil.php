@@ -1,5 +1,5 @@
 
-Les recette
+Les recettes
 
 <?php 
 use Illuminate\Support\Facades\DB; ?>

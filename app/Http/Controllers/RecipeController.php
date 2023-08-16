@@ -16,7 +16,7 @@ class RecipeController extends Controller
     public function index()
     {
         //récupérer les recettes
-        
+        $recipes = DB::table('recipe')->get();
         //retourne l'index
         return view('recipe.index');
     }
@@ -44,8 +44,12 @@ class RecipeController extends Controller
 
         ]);
 
+        $user = Auth::user(); // Récupérer l'utilisateur actuellement connecté
+
+        $data['user_id'] = $user->id; // Ajouter l'ID de l'utilisateur à $data
 
         Recipe::create($data);
+
         return redirect()->route('recipe.store');
     }
 
@@ -55,19 +59,22 @@ class RecipeController extends Controller
     public function show(recipe $recipe)
     {
         //affiche 1 recette 
-        $recipe = DB::table('recipe')->get();
+        $recipe = Recipe::find('$id');
  
         return view('recipe.show', ['recipe' => $recipe]);
         
     
     }
+
+    
     public function test() {
         return ('recette remplie');
     }
     
         public function getrecipebyId($id) {
-            $recipe = DB::table('recipes')->find($id);
+            $recipe = DB::table('users')->find($id);
             if ($recipe) {
+<<<<<<< HEAD
                 return view('recipe.index', ['recipe' => $recipe]);
             }
         }
@@ -76,7 +83,14 @@ class RecipeController extends Controller
             $recipe = DB::table('users')->find($id);
             if ($recipe) {
                 return view('recipe.index', ['user' => $recipe]);
+=======
+                return var_dump($id);// view('recipe.index', ['user' => $recipe]);
+>>>>>>> pascal
             }
+
+            $user = Auth::user(); // Récupérer l'utilisateur actuellement connecté
+
+            $data['user_id'] = $user->id; // Ajouter l'ID de l'utilisateur à $data
         }
     /**
      * Show the form for editing the specified resource.

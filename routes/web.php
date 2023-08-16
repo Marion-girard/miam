@@ -38,7 +38,11 @@ require __DIR__.'/auth.php';
 Route::get('/recette', [AcceuilController::class, 'recette']);
 
 
+<<<<<<< HEAD
 //Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.test'); // Afficher la liste des recettes
+=======
+// Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.index'); // Afficher la liste des recettes
+>>>>>>> pascal
 Route::get('/recipe', [RecipeController::class, 'create'])->name('recipe.create'); // Afficher le formulaire de création
 
 Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');

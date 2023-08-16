@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('recipes', function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger('id');
             $table->string('title');
             $table->text('description');
             $table->text('ingredients');
             $table->text('instructions');
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->index('user_id');            
-            $table->timestamps();
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
+            $table->bigInteger('user_id');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('recipes');
+        Schema::dropIfExists('recipe');
     }
 };
