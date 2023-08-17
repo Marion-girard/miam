@@ -76,12 +76,17 @@ class RecipeController extends Controller
         return ('recette remplie');
     }
     
-        public function getrecipebyId($id) {
-            $recipe = DB::table('users')->find($id);
-            if ($recipe) {
-                return view('recipe.index', ['recipe' => $recipe]);
-            }
+    public function getrecipebyId($id) 
+    {
+        $recipe = Recipe::find($id);
+        if ($recipe) {
+            return view('recipe.show', compact('recipe'));
         }
+        
+        // Si la recette n'est pas trouvée, redirige vers la liste.
+        return redirect()->route('recipe.index');
+    }
+
 
        /* public function getUserbyId($id) {
             $recipe = DB::table('users')->find($id);
@@ -110,16 +115,7 @@ class RecipeController extends Controller
         // Si la recette n'est pas trouvée, redirige vers la liste.
         //return redirect()->route('recipe.index');
     }*/
-    public function getrecipebyId($id) 
-    {
-        $recipe = Recipe::find($id);
-        if ($recipe) {
-            return view('recipe.show', compact('recipe'));
-        }
-        
-        // Si la recette n'est pas trouvée, redirige vers la liste.
-        return redirect()->route('recipe.index');
-    }
+
 
 
     /**
