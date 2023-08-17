@@ -68,7 +68,7 @@ class RecipeController extends Controller
             return view('recipe.show', compact('recipe'));
         }
         
-        // Si la recette n'est pas trouvée, rediriger vers la liste.
+        // Si la recette n'est pas trouvée, redirige vers la liste.
         return redirect()->route('recipe.index');
     }
 
