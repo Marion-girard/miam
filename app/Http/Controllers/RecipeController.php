@@ -70,12 +70,8 @@ class RecipeController extends Controller
     
         return view('recipe.show', compact('recipe'));
     }
+    
 
-    
-    public function test() {
-        return ('recette remplie');
-    }
-    
     public function getrecipebyId($id) 
     {
         $recipe = Recipe::find($id);
@@ -86,6 +82,12 @@ class RecipeController extends Controller
         // Si la recette n'est pas trouvée, redirige vers la liste.
         return redirect()->route('recipe.index');
     }
+    
+    public function test() {
+        return ('recette remplie');
+    }
+    
+    
 
 
        /* public function getUserbyId($id) {
