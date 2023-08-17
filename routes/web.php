@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
     Route::get('/create-post', [RecipeController::class, 'create'])->name('recipe.create');
     Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
     Route::get('/recipe', [RecipeController::class, 'edit'])->name('recipe.edit');
@@ -38,15 +39,16 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
  
+/*Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/create-post', [RecipeController::class, 'create'])->name('recipe.create');
+    Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
+    // Route::post('/recipe/add-message', [RecipeController::class, 'addMessage'])->name('recipe.addMessage');
+    // Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.index');
+    Route::get('/recipe/{id}', [RecipeController::class, 'show'])->name('recipe.get');
+    
+});*/
 Route::get('/Accueil', [AcceuilController::class, 'showrecette'])->name('accueil');
-
-
-//Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.test'); // Afficher la liste des recettes
-//Route::get('/recipe', [RecipeController::class, 'create'])->name('recipe.create'); // Afficher le formulaire de création
-
-//Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
-//Route::get('/recipe/{id}', [RecipeController::class, 'getrecipebyId'])->name('recipe.get');
-//Route::get('/recipe', [RecipeController::class, 'test'])->name('recipe.test'); // Afficher la liste des recettes
-
-
