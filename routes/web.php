@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/create-post', [RecipeController::class, 'create'])->name('recipe.create');
+    Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
+    Route::get('/recipe', [RecipeController::class, 'edit'])->name('recipe.edit');
 });
 
 require __DIR__.'/auth.php';
@@ -45,8 +48,4 @@ Route::get('/Accueil', [AcceuilController::class, 'showrecette'])->name('accueil
 //Route::get('/recipe/{id}', [RecipeController::class, 'getrecipebyId'])->name('recipe.get');
 //Route::get('/recipe', [RecipeController::class, 'test'])->name('recipe.test'); // Afficher la liste des recettes
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/create-post', [RecipeController::class, 'create'])->name('recipe.create');
-    Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
-    Route::get('/recipe', [RecipeController::class, 'edit'])->name('recipe.edit');
-});
+
