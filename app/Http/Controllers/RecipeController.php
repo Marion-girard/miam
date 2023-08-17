@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\recipe;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -16,19 +14,17 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //récupérer les recettes
-        $recipes = DB::table('recipe')->get();
-        //retourne l'index
-        return view('recipe.index');
+        $recipes = Recipe::all();
+        return view('recipe.index', compact('recipes'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //retourne create
-        return view('recipe.index');
+        $recipes = Recipe::all();
+        return view('recipe.index', compact('recipes'));
     }
 
     /**
@@ -36,13 +32,11 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //enregistre 1 nouvl recette ds la bdd
-        $data = $request->validate ([
+        $data = $request->validate([
             'title' => 'required',
             'description' => 'required',
             'ingredients' => 'required',
             'instructions' => 'required',
-
         ]);
 
         $user = Auth::user(); // Récupérer l'utilisateur actuellement connecté
@@ -52,19 +46,23 @@ class RecipeController extends Controller
         Recipe::create($data);
 
         return redirect()->route('recipe.create');
+
+
+        /*$user = Auth::user();
+
+        $data['user_id'] = $user->id;
+        Recipe::create($data);
+
+        return redirect()->route('recipe.index'); */ // redirige vers la liste après la création
     }
 
     
     /**
      * Display the specified resource.
      */
-    public function show(recipe $recipe)
+    public function show($id)
     {
-        //affiche 1 recette 
-        $recipe = Recipe::find('$id');
- 
-        return view('recipe.show', ['recipe' => $recipe]);
-        
+        $recipe = Recipe::find($id);
     
     }
 
@@ -89,7 +87,25 @@ class RecipeController extends Controller
             $user = Auth::user(); // Récupérer l'utilisateur actuellement connecté
 
             $data['user_id'] = $user->id; // Ajouter l'ID de l'utilisateur à $data
+       /* if (!$recipe) {
+            return redirect()->route('recipe.index')->with('error', 'Recette non trouvée.');
         }
+    
+        return view('recipe.show', compact('recipe'));*/
+    }
+    
+
+    /*public function getrecipebyId($id) 
+    {
+        $recipe = Recipe::find($id);
+        if ($recipe) {
+            return view('recipe.show', compact('recipe'));
+        }
+        
+        // Si la recette n'est pas trouvée, redirige vers la liste.
+        //return redirect()->route('recipe.index');
+    }*/
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -104,25 +120,24 @@ class RecipeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, recipe $recipe)
+    public function update(Request $request, Recipe $recipe)
     {
-        //mets à jour une recette ds la bdd
-        $data = $request->validate ([
-            'title' =>'required',
-            'ingredients' =>'required',
-            'step' =>'required',
+        $data = $request->validate([
+            'title' => 'required',
+            'ingredients' => 'required',
+            'instructions' => 'required',
         ]);
 
         $recipe->update($data);
+
         return redirect()->route('recipe.show', $recipe->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(recipe $recipe)
+    public function destroy(Recipe $recipe)
     {
-        //supprime 1 recette
         $recipe->delete();
         return redirect()->route('recipe.index');
     }

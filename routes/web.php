@@ -5,7 +5,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\AcceuilController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +16,7 @@ use App\Http\Controllers\AcceuilController;
 |
 */
 
-
+// Routes sans authentification
 Route::get('/', function () {
     return view('layout');
 });
@@ -26,6 +25,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/recette', [AcceuilController::class, 'recette']);
+
+// Routes nécessitant une authentification
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -36,9 +38,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/recipe', [RecipeController::class, 'edit'])->name('recipe.edit');
     Route::get('/recipe/{id}', [RecipeController::class, 'show'])->name('recipe.get');
 });
-
-require __DIR__.'/auth.php';
- 
 /*Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -46,9 +45,14 @@ require __DIR__.'/auth.php';
 
     Route::get('/create-post', [RecipeController::class, 'create'])->name('recipe.create');
     Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
-    // Route::post('/recipe/add-message', [RecipeController::class, 'addMessage'])->name('recipe.addMessage');
-    // Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.index');
+   // Route::post('/recipe/add-message', [RecipeController::class, 'addMessage'])->name('recipe.addMessage');
+   // Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.index');
     Route::get('/recipe/{id}', [RecipeController::class, 'show'])->name('recipe.get');
-    
+
 });*/
+
+// Auth routes
+require __DIR__.'/auth.php';
+ 
+
 Route::get('/Accueil', [AcceuilController::class, 'showrecette'])->name('accueil');
