@@ -64,6 +64,11 @@ class RecipeController extends Controller
     {
         $recipe = Recipe::find($id);
     
+        if (!$recipe) {
+            return redirect()->route('recipe.index')->with('error', 'Recette non trouvée.');
+        }
+    
+        return view('recipe.show', compact('recipe'));
     }
 
     
