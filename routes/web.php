@@ -35,8 +35,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/create-post', [RecipeController::class, 'create'])->name('recipe.create');
     Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
-    Route::post('/recipe/add-message', [RecipeController::class, 'addMessage'])->name('recipe.addMessage');
-    Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.index');
+   // Route::post('/recipe/add-message', [RecipeController::class, 'addMessage'])->name('recipe.addMessage');
+   // Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.index');
     Route::get('/recipe/{id}', [RecipeController::class, 'show'])->name('recipe.get');
 
 });
