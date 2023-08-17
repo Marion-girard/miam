@@ -78,7 +78,7 @@ class RecipeController extends Controller
             }
         }
 
-        public function getUserbyId($id) {
+       /* public function getUserbyId($id) {
             $recipe = DB::table('users')->find($id);
             if ($recipe) {
                 return view('recipe.index', ['user' => $recipe]);
@@ -87,12 +87,12 @@ class RecipeController extends Controller
             $user = Auth::user(); // Récupérer l'utilisateur actuellement connecté
 
             $data['user_id'] = $user->id; // Ajouter l'ID de l'utilisateur à $data
-       /* if (!$recipe) {
+        if (!$recipe) {
             return redirect()->route('recipe.index')->with('error', 'Recette non trouvée.');
         }
     
-        return view('recipe.show', compact('recipe'));*/
-    }
+        return view('recipe.show', compact('recipe'));
+    }*/
     
 
     /*public function getrecipebyId($id) 
@@ -105,6 +105,17 @@ class RecipeController extends Controller
         // Si la recette n'est pas trouvée, redirige vers la liste.
         //return redirect()->route('recipe.index');
     }*/
+    public function getrecipebyId($id) 
+    {
+        $recipe = Recipe::find($id);
+        if ($recipe) {
+            return view('recipe.show', compact('recipe'));
+        }
+        
+        // Si la recette n'est pas trouvée, redirige vers la liste.
+        return redirect()->route('recipe.index');
+    }
+
 
     /**
      * Show the form for editing the specified resource.
