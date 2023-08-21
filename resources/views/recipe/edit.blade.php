@@ -2,11 +2,11 @@
 
 
     <h1>{{'Modifier la recette'}}</h1>
-
-    <form action="{{ route('recipes.update', $recipe->id) : route('recipe.store') }}" method="POST">
+  
+    <form action="{{ route('recipe.update', $recipe->id)  }}" method="POST">
         @csrf
        
-            @method('PUT')
+            @method('post')
         
         
         <div> 

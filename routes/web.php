@@ -35,9 +35,10 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/create-post', [RecipeController::class, 'create'])->name('recipe.create');
     Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
-    Route::get('/recipe', [RecipeController::class, 'edit'])->name('recipes.edit');
+
     Route::get('/recipe/{id}', [RecipeController::class, 'show'])->name('recipe.get');
-   
+    Route::get('/recipeEdit/{id}', [RecipeController::class, 'edit'])->name('recipes.edit');
+    Route::post('/recipe/{id}', [RecipeController::class, 'update'])->name('recipe.update');
 });
 
 

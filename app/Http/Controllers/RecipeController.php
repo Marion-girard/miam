@@ -123,40 +123,52 @@ class RecipeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request)
+    public function edit($id)
     {
+        $recipe = Recipe::find($id);
         //affiche le form pour éditer 1 recette existante
-        return view('recipe.edit', /*[
-           'recipe' => $request->recipe(),
+        return view('recipe.edit',  compact('recipe')/*, [
+            'recipe' => $request->recipe(),
         ]*/);
     }
-   /* public function updateRecipe (Request $request)
+   public function update ($id, Request $request)
     {
-        $recipe = Recipe::find($request->recipe['id']);
-        $recipe->title = $request->recipe['title'];
-        $recipe->description = $request->recipe['description'];
-        $recipe->ingredients = $request->recipe['ingredients'];
-        $recipe->instructions = $request->recipe['instructions'];
+        
+        $data = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'ingredients' => 'required',
+            'instructions' => 'required',
+        ]);
+        
+        $recipe = Recipe::find($id);
+        $recipe->title = $data['title'];
+        $recipe->description = $data['description'];
+        $recipe->ingredients = $data['ingredients'];
+        $recipe->instructions = $data['instructions'];
         $recipe->save();
-        return $recipe;
-
-    }*/
+        return  view('recipe.index');
+    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Recipe $recipe)
+    /*public function update(Request $request, Recipe $recipe)
     {
         $data = $request->validate([
             'title' => 'required',
+            'description' => 'required',
             'ingredients' => 'required',
             'instructions' => 'required',
         ]);
 
-        $recipe->update($data);
-
-        return redirect()->route('recipe.show', $recipe->id);
-    }
+       $recipe->update($data);
+        $recipe->save();
+        dump($recipe);
+       
+        
+       // return view('recipe.index');
+    }*/
 
     /**
      * Remove the specified resource from storage.
