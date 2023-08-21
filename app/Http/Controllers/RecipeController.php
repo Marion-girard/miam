@@ -102,7 +102,7 @@ class RecipeController extends Controller
         if (!$recipe) {
             return redirect()->route('recipe.index')->with('error', 'Recette non trouvée.');
         }
-    
+        
         return view('recipe.show', compact('recipe'));
     }*/
     
@@ -117,19 +117,30 @@ class RecipeController extends Controller
         // Si la recette n'est pas trouvée, redirige vers la liste.
         //return redirect()->route('recipe.index');
     }*/
-
-
-
+    
+    
+    
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Request $request)
     {
         //affiche le form pour éditer 1 recette existante
-        return view('recipe.edit', [
-            'recipe' => $request->recipe(),
-        ]);
+        return view('recipe.edit', /*[
+           'recipe' => $request->recipe(),
+        ]*/);
     }
+   /* public function updateRecipe (Request $request)
+    {
+        $recipe = Recipe::find($request->recipe['id']);
+        $recipe->title = $request->recipe['title'];
+        $recipe->description = $request->recipe['description'];
+        $recipe->ingredients = $request->recipe['ingredients'];
+        $recipe->instructions = $request->recipe['instructions'];
+        $recipe->save();
+        return $recipe;
+
+    }*/
 
     /**
      * Update the specified resource in storage.

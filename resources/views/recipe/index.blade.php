@@ -25,7 +25,10 @@
         <div class="col-md-4 mb-4  ">
             <div class="border-black p-3 center-content">
                 <h2 class="font-weight-bold"> <a href="{{ route('recipe.get', $recipe->id) }}"> {{ $recipe->title }} </a> </h2>
-                <p>   {{ $recipe->description }}  Modifier  <p>  
+                <p>   {{ $recipe->description }}  <a href="{{ route('recipes.edit', $recipe->id)}}">
+                    {{ __('Modifier') }}
+                </a> <p>  
+                    
             </div>
         </div>        
         @endforeach

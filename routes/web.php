@@ -35,21 +35,11 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/create-post', [RecipeController::class, 'create'])->name('recipe.create');
     Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
-    //Route::get('/recipe', [RecipeController::class, 'edit'])->name('recipe.edit');
+    Route::get('/recipe', [RecipeController::class, 'edit'])->name('recipes.edit');
     Route::get('/recipe/{id}', [RecipeController::class, 'show'])->name('recipe.get');
+   
 });
-/*Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/create-post', [RecipeController::class, 'create'])->name('recipe.create');
-    Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
-   // Route::post('/recipe/add-message', [RecipeController::class, 'addMessage'])->name('recipe.addMessage');
-   // Route::get('/recipe', [RecipeController::class, 'index'])->name('recipe.index');
-    Route::get('/recipe/{id}', [RecipeController::class, 'show'])->name('recipe.get');
-
-});*/
 
 // Auth routes
 require __DIR__.'/auth.php';

@@ -2,7 +2,7 @@
 
 
 
-    <h1>{{ isset($recipe) ? 'Modifier la recette' : 'Ajouter une recette' }}</h1>
+    <h1>{{ 'Ajouter une recette' }}</h1>
 
     <form action="/recipe" method="post">
         @csrf
