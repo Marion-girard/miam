@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\AcceuilController;
+use App\Http\Controllers\CommentaireController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +49,5 @@ require __DIR__.'/auth.php';
  
 
 Route::get('/Accueil', [AcceuilController::class, 'showrecette'])->name('accueil');
+//Route::post('/Commentaire', [CommentaireController::class, 'test'])->middleware(['auth', 'verified'])->name('commentaire.store');
+Route::post('/Commentaire', [CommentaireController::class, 'store'])->middleware(['auth', 'verified'])->name('commentaire.store');

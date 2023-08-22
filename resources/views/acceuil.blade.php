@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB; ?>
  
  
  @foreach ($recipes as $recipe)
- {{ $recipe->title}} 
+ <a href="{{ route('recipe.get', $recipe->id) }}">{{ $recipe->title}} </a>
  <?php $user = DB::table('users')->where( "id", $recipe->user_id)->first(); ?>
         @if ($user)
           {{$user->name}}

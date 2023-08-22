@@ -18,8 +18,7 @@ return new class extends Migration
             $table->text('ingredients');
             $table->text('instructions');
             $table->timestamps();
-            $table->bigInteger('user_id');
-            
+            $table->bigInteger('user_id'); 
         });
     }
 
