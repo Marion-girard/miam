@@ -153,29 +153,30 @@ class RecipeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    /*public function update(Request $request, Recipe $recipe)
+    /* public function update(Request $request, Recipe $recipe)
     {
         $data = $request->validate([
             'title' => 'required',
-            'description' => 'required',
             'ingredients' => 'required',
             'instructions' => 'required',
         ]);
 
-       $recipe->update($data);
-        $recipe->save();
-        dump($recipe);
-       
-        
-       // return view('recipe.index');
+        $recipe->update($data);
+
+        return redirect()->route('recipe.show', $recipe->id);
+    }
+
     }*/
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Recipe $recipe)
+    public function destroy($id)
     {
+        
+        $recipe = Recipe::findOrFail($id);
         $recipe->delete();
-        return redirect()->route('recipe.index');
+        
+       return view('recipe.index');
     }
 }
