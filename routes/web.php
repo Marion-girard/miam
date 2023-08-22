@@ -50,4 +50,4 @@ require __DIR__.'/auth.php';
 
 Route::get('/Accueil', [AcceuilController::class, 'showrecette'])->name('accueil');
 //Route::post('/Commentaire', [CommentaireController::class, 'test'])->middleware(['auth', 'verified'])->name('commentaire.store');
-Route::post('/Commentaire', [CommentaireController::class, 'store'])->middleware(['auth', 'verified'])->name('commentaire.store');
+Route::post('/commentaire/{id}', [CommentaireController::class, 'store'])->middleware(['auth', 'verified'])->name('commentaire.store');

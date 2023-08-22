@@ -9,16 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentaireController extends Controller
 {
-    public function store(Request $request,Recipe $id)
+    public function store(Request $request,  $id)
     {
         $data = $request->validate([
             'contenue' => 'required',
         ]);
 
         $user = Auth::user(); // Récupérer l'utilisateur actuellement connecté
-        $recipe = Recipe::find($id);
+        
         $data['user_id'] = $user->id; // Ajouter l'ID de l'utilisateur à $data
-        $data['recipe_id'] = $recipe->id;
+        $data['recipe_id'] = $id;
         Commentaire::create($data);
 
         return redirect()->route('recipe.create');

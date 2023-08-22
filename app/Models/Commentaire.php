@@ -18,4 +18,9 @@ class Commentaire extends Model
     {   //une recette appartient à un utilisateur
         return $this->belongsTo(User::class); 
     }
+
+    public function recipe()
+    {
+        return $this->belongsTo(Recipe::class);
+    }
 }
