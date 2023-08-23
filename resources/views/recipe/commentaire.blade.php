@@ -7,6 +7,7 @@
 
 
 <h2> Commentaire</h2>
+
 <?php  $commentaires = DB::table('commentaires')->where("recipe_id", $recipe->id )->get();?>
 @foreach ($commentaires as $commentaire)
     {{ $commentaire->contenue}} 
@@ -16,8 +17,11 @@
         @endif
     
     @if (Auth::user()->id == $commentaire->user_id)
-     {{  __('Modifier') }}
-     <form action="" method="POST">
+    <form action="" method="POST">
+        @csrf
+        <button type="submit">{{  __('Modifier') }} </button>
+    </form> 
+    <form action="" method="POST">
         @method('DELETE')
         @csrf
         <button type="submit">{{ __('Suprime') }}</button>
@@ -27,7 +31,8 @@
         
 @endforeach
 
- 
+
+
 
 
 
