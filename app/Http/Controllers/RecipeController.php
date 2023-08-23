@@ -63,6 +63,7 @@ class RecipeController extends Controller
     public function show($id)
     {
         $recipe = Recipe::find($id);
+
     
         if (!$recipe) {
             return redirect()->route('recipe.index')->with('error', 'Recette non trouvée.');
@@ -128,7 +129,7 @@ class RecipeController extends Controller
         $recipe = Recipe::find($id);
         //affiche le form pour éditer 1 recette existante
         return view('recipe.edit',  compact('recipe')/*, [
-            'recipe' => $request->recipe(),
+            'recipe' => $request->recipe(), 
         ]*/);
     }
    public function update ($id, Request $request)
