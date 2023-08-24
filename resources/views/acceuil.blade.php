@@ -1,4 +1,6 @@
 
+<a href="{{ route('dashboard') }}">{{ "Retour au dashboard"}} </a>
+
 Les recettes
 <div>
 <?php 

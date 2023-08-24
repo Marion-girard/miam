@@ -1,5 +1,5 @@
 
-
+<a href="{{ route('accueil') }}">{{ "Retour à l'accueil"}} </a>
 
 <h1>{{ $recipe->title }}</h1>
 <p><b>Description:</b> {{ $recipe->description }}</p>

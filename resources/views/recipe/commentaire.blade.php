@@ -1,3 +1,5 @@
+
+
 <form action="{{ route('commentaire.store', $recipe->id)  }}" method="post">
     @csrf <!-- Ajoutez le token CSRF pour la sécurité -->
     <label> Commentaire: </label>
@@ -10,8 +12,8 @@
 <?php  $commentaires = DB::table('commentaires')->where("recipe_id", $recipe->id )->get();?>
 @foreach ($commentaires as $commentaire)
 @if(isset($_POST['modifier']))
-    @if(Auth::user()->id == $commentaire->user_id)
-    <form action="{{ route('commentaire.update', $commentaire->id)  }}" method="post">
+    @if(Auth::user()->id == $commentaire->user_id )
+    <form action="{{ route('commentaire.update', $commentaire->id)  }}" method="post" >
         @csrf <!-- Ajoutez le token CSRF pour la sécurité -->
         <textarea name="contenue"></textarea> <!-- Utilisez <textarea> au lieu de <input> -->
         <button type="submit">Envoyer</button>
@@ -40,7 +42,7 @@
         <button name="modifier" type="submit">{{  __('Modifier') }} </button>
     </form> 
 
-    <form action="" method="POST">
+    <form action="{{ route('commentaire.destroy',$commentaire->id) }}" method="POST">
         @method('DELETE')
         @csrf
         <button type="submit">{{ __('Suprime') }}</button>

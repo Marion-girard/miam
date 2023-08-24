@@ -60,4 +60,7 @@ Route::post('/commentaire/{id}', [CommentaireController::class, 'store'])->middl
 
 Route::post('/edit/{id}', [CommentaireController::class, 'edit'])->name('edit');
 Route::post('/recipe/{id}', [CommentaireController::class, 'update'])->middleware(['auth', 'verified'])->name('commentaire.update');
+Route::delete('/recipe/{id}', [CommentaireController::class, 'destroy'])->middleware(['auth', 'verified'])->name('commentaire.destroy');
+
+
     

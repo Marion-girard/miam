@@ -62,9 +62,9 @@ class CommentaireController extends Controller
         return  $recipe. view('recipe.show', compact('recipe'));
     }
 
-    public function update ($id, Request $request)
+    public function update ($id, Request $request,)
     {
-       
+        
         $data = $request->validate([
             'contenue' => 'required',
         ]);
@@ -73,6 +73,14 @@ class CommentaireController extends Controller
         $commentaire->contenue = $data['contenue'];
         
         $commentaire->save();
-        return  view('recipe.show', compact('recipe'));
+          return redirect()->route('recipe.get', $commentaire->recipe_id);
+    }
+    public function destroy($id)
+    {
+        
+        $commentaire = Commentaire::findOrFail($id);
+        $commentaire->delete();
+        
+        return redirect()->route('recipe.get', $commentaire->recipe_id);
     }
 }
