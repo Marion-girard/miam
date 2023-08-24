@@ -55,5 +55,24 @@ class CommentaireController extends Controller
         return view('recipe.show', compact('commentaire'));
     }
 
-    
+    public function edit($id)
+    {
+        $recipe = Recipe::find($id);
+        
+        return  $recipe. view('recipe.show', compact('recipe'));
+    }
+
+    public function update ($id, Request $request)
+    {
+       
+        $data = $request->validate([
+            'contenue' => 'required',
+        ]);
+        
+        $commentaire = Commentaire::find($id);
+        $commentaire->contenue = $data['contenue'];
+        
+        $commentaire->save();
+        return  view('recipe.show', compact('recipe'));
+    }
 }

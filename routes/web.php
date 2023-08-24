@@ -49,7 +49,15 @@ require __DIR__.'/auth.php';
  
 
 Route::get('/Accueil', [AcceuilController::class, 'showrecette'])->name('accueil');
-Route::post('/test/{id}', [CommentaireController::class, 'test'])->middleware(['auth', 'verified'])->name('commentaire.test');
+//Route::post('/test/{id}', [CommentaireController::class, 'test'])->middleware(['auth', 'verified'])->name('commentaire.test');
 Route::post('/commentaire/{id}', [CommentaireController::class, 'store'])->middleware(['auth', 'verified'])->name('commentaire.store');
 //Route::get('/recipe/{id}', [CommentaireController::class, 'show'])->middleware(['auth', 'verified']);
-Route::get('/Accueil', [AcceuilController::class, 'showrecette'])->name('accueil');
+
+
+/*Route::get('/test', function () {
+    return view('test');
+})->name('test');*/
+
+Route::post('/edit/{id}', [CommentaireController::class, 'edit'])->name('edit');
+Route::post('/recipe/{id}', [CommentaireController::class, 'update'])->middleware(['auth', 'verified'])->name('commentaire.update');
+    
